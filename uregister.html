@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="login.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <script>
+        // Move focus to next input on Enter
+        function moveToNextField(event, nextFieldId) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                document.getElementById(nextFieldId).focus();
+            }
+        }
+
+        // Real-time email validation
+        function validateEmailInput(input) {
+            const email = input.value;
+            const errorSpan = document.getElementById("email-error");
+
+            if (/[A-Z]/.test(email)) {
+                errorSpan.textContent = "Email must be in lowercase only.";
+                input.style.borderColor = "red";
+            } else {
+                errorSpan.textContent = "";
+                input.style.borderColor = "";
+            }
+        }
+
+        // On form submit email validation
+        function validateEmail() {
+            var email = document.getElementById("email").value;
+            var errorSpan = document.getElementById("email-error");
+
+            if (email !== email.toLowerCase()) {
+                errorSpan.textContent = "Email must be in lowercase only.";
+                return false;
+            }
+
+            if (!email.endsWith("@gmail.com")) {
+                errorSpan.textContent = "Email must end with @gmail.com";
+                return false;
+            }
+
+            errorSpan.textContent = "";
+            return true;
+        }
+
+        // Full Name validation to avoid numbers
+        function validateName() {
+            var fullname = document.getElementById('fullname').value;
+            var nameError = document.getElementById('name-error');
+            
+            if (/\d/.test(fullname)) {  // Check if the name contains numbers
+                nameError.textContent = "Full Name should not contain numbers.";
+                return false;
+            } else {
+                nameError.textContent = "";
+                return true;
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <!-- Close Button -->
+        <button id="wrongMarkBtn">X</button>
+        <script>
+            document.getElementById('wrongMarkBtn').addEventListener('click', function () {
+                window.location.replace('Home.html');
+            });
+        </script>
+
+        <!-- Registration Form -->
+        <form action="uregister.php" method="POST" onsubmit="return validateEmail()">
+            <h1>Register</h1>
+
+            <!-- Full Name -->
+            <div class="input-box">
+                <input type="text" id="fullname" name="fullname" placeholder="Enter your Full Name" required
+                    onkeydown="moveToNextField(event, 'email')" oninput="validateName()">
+                <i class='bx bxs-user'></i>
+                <span id="name-error" style="color: red; font-size: 14px;"></span> <!-- Error message for invalid name -->
+            </div>
+
+            <!-- Email -->
+            <div class="input-box">
+                <input type="email" id="email" name="email" placeholder="Enter your Gmail" required
+                    onkeydown="moveToNextField(event, 'phone')"
+                    oninput="validateEmailInput(this)"
+                    onchange="validateEmail()">
+                <i class='bx bxs-envelope'></i>
+                <span id="email-error" style="color: red; font-size: 14px;"></span>
+            </div>
+
+            <!-- Phone Number -->
+            <div class="input-box">
+                <input type="tel" id="phone" name="phone" placeholder="Enter phone number" maxlength="10" required
+                    pattern="^[6-9][0-9]{9}$" title="Phone number must start with 6-9 and be 10 digits"
+                    onkeydown="moveToNextField(event, 'password')">
+                <i class='bx bxs-phone'></i>
+            </div>
+
+            <!-- Password -->
+            <div class="input-box">
+                <input type="password" id="password" name="password" placeholder="Create a password" required
+                    onkeydown="moveToNextField(event, 'cpassword')">
+                <i class='bx bxs-lock-alt'></i>
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="input-box">
+                <input type="password" id="cpassword" name="cpassword" placeholder="Confirm your password" required
+                    onkeydown="moveToNextField(event, 'gender')">
+                <i class='bx bxs-lock-alt'></i>
+            </div>
+
+            <!-- Gender -->
+            <div class="gender-box" id="gender">
+                <h3>Gender</h3>
+                <div class="gender-option">
+                    <label><input type="radio" name="gender" value="Male" checked> Male</label>
+                    <label><input type="radio" name="gender" value="Female"> Female</label>
+                    <label><input type="radio" name="gender" value="Other"> Prefer not to say</label>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn" name="register">Register</button>
+        </form>
+
+        <!-- Already Registered -->
+        <div class="Register">
+            <span>Already have an account? <a href="ulogin.html">Login</a></span>
+        </div>
+    </div>
+</body>
+
+</html>

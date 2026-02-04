@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="login.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <script>
+        // Password match check
+        function validateForm() {
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            const fullname = document.getElementById('fullname').value;
+            const nameError = document.getElementById('name-error');
+
+            // Full Name validation
+            if (!/^[a-zA-Z ]+$/.test(fullname)) {
+                nameError.textContent = "Name must contain only letters and spaces.";
+                return false;
+            } else {
+                nameError.textContent = "";
+            }
+
+            if (password !== confirmPassword) {
+                alert("Passwords do not match!");
+                return false;
+            }
+
+            return true;
+        }
+
+        // Real-time validation for Full Name
+        function validateNameInput(input) {
+            const nameError = document.getElementById("name-error");
+            if (!/^[a-zA-Z ]*$/.test(input.value)) {
+                nameError.textContent = "Name must contain only letters and spaces.";
+                input.style.borderColor = "red";
+            } else {
+                nameError.textContent = "";
+                input.style.borderColor = "";
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <input type="checkbox" id="check">
+        <button id="wrongMarkBtn" type="button">X</button>
+        <script>
+            document.getElementById('wrongMarkBtn').addEventListener('click', function () {
+                window.location.replace('Home.html');
+            });
+        </script>
+
+        <form action="aregister.php" method="POST" onsubmit="return validateForm()">
+            <h1>Register</h1>
+
+            <!-- Full Name -->
+            <div class="input-box">
+                <input type="text" id="fullname" placeholder="Enter your Full Name" name="fullname" required
+                    oninput="validateNameInput(this)">
+                <i class='bx bxs-user'></i>
+                <span id="name-error" style="color: red; font-size: 14px;"></span>
+            </div>
+
+            <!-- Email -->
+            <div class="input-box">
+                <input id="email" type="email" placeholder="Enter your Gmail" name="email" required>
+                <i class='bx bxs-envelope'></i>
+                <span id="email-error" style="color: red; font-size: 14px;"></span>
+            </div>
+
+            <!-- Phone -->
+            <div class="input-box">
+                <input id="phone" type="tel" placeholder="10-digit phone number" name="phone" required maxlength="10">
+                <i class='bx bxs-phone'></i>
+                <span id="phone-error" style="color: red; font-size: 14px;"></span>
+            </div>
+
+            <!-- Password -->
+            <div class="input-box">
+                <input type="password" id="password" placeholder="Create a password" name="password" required>
+                <i class='bx bxs-lock-alt'></i>
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="input-box">
+                <input type="password" id="confirm-password" placeholder="Confirm your password" name="cpassword"
+                    required>
+                <i class='bx bxs-lock-alt'></i>
+            </div>
+
+            <!-- Gender -->
+            <div class="gender-box">
+                <h3>Gender</h3>
+                <div class="gender-option">
+                    <div class="gender">
+                        <input type="radio" id="check-male" name="gender" value="m" required>
+                        <label for="check-male">Male</label>
+                    </div>
+                    <div class="gender">
+                        <input type="radio" id="check-female" name="gender" value="f">
+                        <label for="check-female">Female</label>
+                    </div>
+                    <div class="gender">
+                        <input type="radio" id="check-other" name="gender" value="o">
+                        <label for="check-other">Prefer not to say</label>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn" name="register">Register</button>
+        </form>
+
+        <!-- Live Email & Phone Validation -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const emailInput = document.getElementById("email");
+                const phoneInput = document.getElementById("phone");
+                const emailError = document.getElementById("email-error");
+                const phoneError = document.getElementById("phone-error");
+
+                phoneInput.disabled = true;
+
+                emailInput.addEventListener("input", function () {
+                    const email = emailInput.value.trim();
+
+                    if (!email.endsWith("@gmail.com")) {
+                        emailError.textContent = "Email must end with @gmail.com";
+                        phoneInput.disabled = true;
+                    } else if (email !== email.toLowerCase()) {
+                        emailError.textContent = "Email must be in lowercase only.";
+                        phoneInput.disabled = true;
+                    } else {
+                        emailError.textContent = "";
+                        phoneInput.disabled = false;
+                        phoneInput.focus();
+                    }
+                });
+
+                phoneInput.addEventListener("input", function () {
+                    const phone = phoneInput.value.trim();
+                    const pattern = /^[6-9][0-9]{9}$/;
+
+                    if (!pattern.test(phone)) {
+                        phoneError.textContent = "Phone number must be 10 digits and start with 6-9";
+                    } else {
+                        phoneError.textContent = "";
+                    }
+                });
+            });
+        </script>
+
+        <div class="Register">
+            <span>Already have an account? <a href="alogin.html">Login</a></span>
+        </div>
+    </div>
+</body>
+
+</html>

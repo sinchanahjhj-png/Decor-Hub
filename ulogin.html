@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Form</title>
+  <link rel="stylesheet" href="login.css">
+  
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+ 
+  <div class="wrapper">
+    <input type="checkbox" id="check">
+    <button id="wrongMarkBtn">X</button>
+    <script>
+      document.getElementById('wrongMarkBtn').addEventListener('click', function() {
+        // Redirect to the home page
+        window.location.replace('Home.html'); // Adjust the URL as needed
+      });
+    </script>
+<!-- ... -->
+<form action="ulogin.php" method="POST">
+
+      <h1>Login</h1>
+      <div class="input-box">
+       
+        <input id="email" type="email" placeholder="Email" name="email" required>
+        <i class='bx bxs-envelope'></i>
+      </div>
+      <div class="input-box">
+        <input type="password" id="password" placeholder="Password" name="password" required>
+        <i class='bx bxs-lock-alt'></i>
+      </div>
+      <div class="remember-forgot">
+        <label><input type="checkbox">Remember Me</label>
+        <!-- <a href="#">Forgot Password</a> -->
+      </div>
+      <button type="submit" class="btn">Login</button>
+
+    </form>
+    <div class="Register">
+      <span class="Register">Don't have an account? 
+
+        <label for="check"> <a href="uregister.html">Register</label>
+        </a>
+      </span>
+
+    </div>
+  </div>
+
+  
+</body>
+
+</html>

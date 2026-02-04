@@ -1,0 +1,190 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: url(https://img.freepik.com/free-photo/retro-living-room-interior-design_53876-145503.jpg?semt=ais_hybrid)no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.wrapper {
+  width: 400px;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, .2);
+  backdrop-filter: blur(9px);
+  color: #fff;
+  border-radius: 12px;
+  padding: 20px 30px;  
+}
+.wrapper .remember-forgot a{
+  color: #fff;
+}
+.wrapper :where(.remember-forgot label, .remember-forgot input) {
+  cursor: pointer;
+}
+
+#check{
+  display: none
+}
+
+.wrapper h1{
+ /* border-top: 10px; */
+  font-size: 36px;
+  text-align: center; 
+}
+
+.wrapper .input-box{
+  position: relative;
+  width: 100%;
+  height: 40px;
+  margin: 20px 0;
+}
+.input-box input{
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  border: 2px solid rgba(255, 255, 255, .2);
+  border-radius: 40px;
+  font-size: 16px;
+  color: #fff;
+  padding: 20px 40px 20px 20px;
+}
+
+.input-box input::placeholder{
+  color: #fff;
+}
+.input-box i{
+  position: absolute;
+  /* left: 40px; */
+  right: 10px;
+  top: 30%;
+  transform: translate(-50%);
+  font-size: 20px;
+}
+
+.gender-box h3{
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+.wrapper :where(.gender-option, .gender) {
+  display: flex;
+  align-items: center;
+  column-gap: 15px;
+  flex-wrap: wrap;
+  cursor: pointer;
+}
+
+.wrapper .gender {
+  column-gap: 5px;
+  cursor: pointer;
+}
+.gender input{
+  accent-color:rgb(130, 106, 251);
+}
+.wrapper :where(.gender input, .gender label) {
+  cursor: pointer;
+}
+.gender label{
+  color: #fff;
+}
+.wrapper button{
+  outline: none;
+  height: 55px;
+  width: 100%;
+  color: #fff;
+  font-size: 1rem;
+  border: none;
+  margin-top: 30px;
+  cursor: pointer;
+  border-radius: 6px;
+  font-weight: 400;
+  transition: all 0.2s ease;
+  background-color: rgb(130, 106, 251);
+}
+.wrapper button:hover{
+  background-color: rgb(88,56, 250);
+
+
+}
+.wrapper .remember-forgot{
+  display: flex;
+  justify-content: space-between;
+  font-size: 14.5px;
+  margin: -15px 0 15px;
+}
+.remember-forgot label input{
+  accent-color: #fff;
+  margin-right: 3px;
+
+}
+.remember-forgot a{
+  color: #fff;
+  text-decoration: none;
+
+}
+.remember-forgot a:hover{
+  text-decoration: underline;
+}
+.wrapper .btn{
+  width: 100%;
+  height: 45px;
+  background: #fff;
+  border: none;
+  outline: none;
+  border-radius: 40px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+  cursor: pointer;
+  font-size: 16px;
+  color: #333;
+  font-weight: 600;
+}
+.wrapper a{
+ color: #333;
+ text-decoration: none;
+}
+.Login label{
+  color: white;
+  cursor: pointer;
+}
+.Login label:hover{
+  text-decoration: underline;
+}
+
+.Register label{
+  color: white;
+  cursor: pointer;
+}
+.Register label:hover{
+  
+  text-decoration: underline;
+}
+.Register a{
+  color: #fff;
+}
+
+#wrongMarkBtn {
+  margin-top: -40px;
+  position:relative;
+  
+  right:-160px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color:white ;
+  cursor: pointer;
+}
+
+#wrongMarkBtn:hover {
+  opacity: 0.7;
+}
