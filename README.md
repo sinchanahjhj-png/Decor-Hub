@@ -72,6 +72,6 @@ Decor Hub is a web-based home decor e-commerce application developed using PHP a
 
 ## 👩‍💻 Developed By
 **Sinchana H J**  
-MCA Graduate | Aspiring Software Developer
+MCA Graduate | Aspiring Software Developer.
 
 
